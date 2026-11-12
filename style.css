@@ -1,0 +1,137 @@
+/* =========================================
+   Global Settings
+   ========================================= */
+* {
+    font-family: "JetBrainsMono Nerd Font", "Fira Code", monospace;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* =========================================
+   Main Bar & Floating Layout
+   ========================================= */
+window#waybar {
+    background: transparent;
+}
+
+/* Isolate the modules into "floating islands" */
+.modules-left,
+.modules-center,
+.modules-right {
+    background: rgba(20, 20, 30, 0.75); /* Deep dark transparent */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2px 10px;
+    margin: 5px 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Soft drop shadow */
+}
+
+/* =========================================
+   Workspaces
+   ========================================= */
+#workspaces {
+    padding: 0 5px;
+}
+
+#workspaces button {
+    color: #6c7086; /* Dimmed color */
+    padding: 0 8px;
+    margin: 2px 2px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: #1e1e2e;
+    background: #89b4fa; /* Bright blue pill */
+    box-shadow: 0 0 8px rgba(137, 180, 250, 0.5);
+}
+
+#workspaces button:hover {
+    background: rgba(137, 180, 250, 0.2);
+    color: #cdd6f4;
+}
+
+#workspaces button.urgent {
+    background: #f38ba8;
+    color: #1e1e2e;
+}
+
+/* =========================================
+   Window Title
+   ========================================= */
+#window {
+    color: #a6adc8;
+    font-style: italic;
+    font-weight: normal;
+    padding: 0 10px;
+}
+
+/* =========================================
+   The Custom Spotify Widget
+   ========================================= */
+#mpris {
+    /* 1. The Typography */
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #1DB954; /* Spotify's official brand green */
+
+    /* 2. The Shape and Spacing */
+    background: rgba(25, 25, 35, 0.9); /* Darker than the main bar */
+    border-radius: 20px; /* Fully rounded "pill" shape */
+    padding: 2px 15px;
+    margin: 4px 10px;
+
+    /* 3. The Border */
+    border: 1px solid rgba(29, 185, 84, 0.3); /* Subtle green border */
+
+    /* 4. The Animation (Smooth transitions on hover) */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* When the song is PAUSED */
+#mpris.paused {
+    color: #a6adc8; /* Grey text */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(30, 30, 46, 0.6);
+}
+
+/* When you HOVER over the widget */
+#mpris:hover {
+    background: rgba(29, 185, 84, 0.15); /* Glow effect */
+    border: 1px solid rgba(29, 185, 84, 0.8);
+    color: #ffffff; /* Make the text pop */
+    box-shadow: 0 0 10px rgba(29, 185, 84, 0.3); /* Neon shadow */
+}
+
+/* The player icon (Spotify logo) */
+#mpris image {
+    margin-right: 8px;
+    color: #1DB954;
+}
+
+/* =========================================
+   System Stats & Others
+   ========================================= */
+#cpu, #memory, #pulseaudio, #network, #battery, #clock, #tray {
+    padding: 0 8px;
+    color: #cdd6f4;
+}
+
+#cpu { color: #f38ba8; }
+#memory { color: #f9e2af; }
+#pulseaudio { color: #f5c2e7; }
+#clock { color: #89b4fa; font-weight: bold; }
+
+#battery.warning { color: #f9e2af; }
+#battery.critical { color: #f38ba8; animation: blink 1s linear infinite; }
+
+@keyframes blink {
+    to { color: #1e1e2e; background-color: #f38ba8; }
+}
